@@ -1,0 +1,71 @@
+<!--Template drivren approach (TD)-->
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <form (ngSubmit)="onSubmit(formReference)" #formReference="ngForm">
+          <div id="user-date" ngModelGroup="dataUser" #dataUserRef="ngModelGroup">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" id="username" class="form-control" ngModel name="username" required>
+            </div>
+  
+            <button class="btn btn-default" type="button" (click)="suggestUsername()">Suggest an username</button>
+  
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" ngModel name="email" required email #email="ngModel">
+              <span class="help-block" *ngIf="!email.valid && email.touched">Email is not valid!</span>
+            </div>
+          </div>
+          <p *ngIf="!dataUserRef.valid && dataUserRef.touched">User information invalid</p>
+  
+          <div class="form-group">
+            <label for="secret">Secret Questions</label>
+            <select id="secret" class="form-control" [ngModel]="defaultQuestion" name="secret">
+              <option value="pet">Your first pet?</option>
+              <option value="teacher">Your first teacher?</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" name="answerQuestion" rows="2" [(ngModel)]="answerQuestion"></textarea>
+          </div>
+          <p>{{answerQuestion}}</p>
+  
+          <div class="radio" *ngFor="let gender of genders; let i = index">
+            <label>
+              <input type="radio" name="gender" ngModel [value]="gender" required>
+              {{gender}}
+            </label>
+          </div>
+          <button class="btn btn-primary" type="submit" [disabled]="!formReference.valid">Submit</button>
+        </form>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2" *ngIf="submitted">
+          <h2>User data</h2>
+          <p>Username: {{userSaved.name}}</p>
+          <p>Mail: {{userSaved.email}}</p>
+          <p>Secret Question: Your first {{userSaved.secret}}</p>
+          <p>Answer: {{userSaved.answer}}</p>
+          <p>Gender: {{userSaved.gender}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--
+    Example: ngModel name="email"
+    ngModel tells Angular that these inputs are indeed controllers of the form
+    IMPORTANT: For this to work, we've got to import (in app-module) FormsModule.
+  
+    
+    #email="ngModel": We can get acess to the email controller like bellow:
+    *ngIf="!email.valid && email.touched"
+  
+  
+    [ngModel]="defaultQuestion": Define a default value to any html element. 
+    Note that defaultQuestion is a variable.
+  
+    [(ngModel)]="answerQuestion": It's still possible to use two-way data biding and it will also be considered as a controller.
+  
+  -->

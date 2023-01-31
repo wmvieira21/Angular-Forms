@@ -1,0 +1,6 @@
+
+/*ng-invalid ng-touched
+They're classes added dinamically by Angular based on the property REQUIRED and EMAIL */
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
