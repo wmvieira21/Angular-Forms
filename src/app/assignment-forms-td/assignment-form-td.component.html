@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <form (ngSubmit)="onSubmit(formRef)" #formRef="ngForm">
+
+                <div class="form-group" ngModelGroup="projectData" #projectDataRef="ngModelGroup">
+
+                    <label>Project name</label>
+                    <input type="text" class="form-control input" name="projectName" ngModel required>
+
+                    <label>Email Address</label>
+                    <input type="email" class="form-control input" name="emailAddress" ngModel email>
+
+                    <select name="" name="projectStatus" class="form-select select" ngModel>
+                        <option value="Stable">Stable</option>
+                        <option value="Critical">Critical</option>
+                        <option value="Finished">Finished</option>
+                    </select>
+                </div>
+                <div>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
