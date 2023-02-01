@@ -1,15 +1,9 @@
+/*Utilize . (dote) when apling css code to classes*/
 .container {
     margin: 30px;
 }
 
-.input {
-    margin-bottom: 20px;
-}
-
-.select {
-    margin-bottom: 20px;
-}
-
-.input.ng-invalid.ng-touched {
+/*Not Utilize . (dote) when apling to elements input*/
+input.ng-invalid.ng-touched {
     border: 1px solid red;
 }

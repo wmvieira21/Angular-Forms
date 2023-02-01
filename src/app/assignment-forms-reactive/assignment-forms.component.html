@@ -3,30 +3,38 @@
         <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
             <form (ngSubmit)="onSubmit()" [formGroup]="project">
                 <div class="form-group" formGroupName="projectData">
-                    <label>Project name</label>
-                    <input type="text" class="form-control input" id="projectName" formControlName="projectName">
+                    <div class="form-group">
+                        <label>Project name</label>
+                        <input type="text" class="form-control" id="projectName" formControlName="projectName">
 
-                    <div class="help-block" *ngIf="!project.get('projectData.projectName').valid 
+                        <span class="help-block" *ngIf="!project.get('projectData.projectName').valid 
                         && project.get('projectData.projectName').touched
                         && project.get('projectData.projectName').errors != null">
-                        <span class="help-block"
-                            *ngIf="project.get('projectData.projectName').errors['required'] && project.get('projectData.projectName').touched">
-                            Project name is required!
-                        </span>
-                        <span class="help-block"
-                            *ngIf="project.get('projectData.projectName').errors['nameForbiddenTeste']">
-                            Project name Teste is forbidden!
+
+                            <span
+                                *ngIf="project.get('projectData.projectName').errors['required'] && project.get('projectData.projectName').touched">
+                                Project name is required!
+                            </span>
+                            <span
+                                *ngIf="project.get('projectData.projectName').errors['nameForbiddenTeste']">
+                                Project name Teste is forbidden!
+                            </span>
                         </span>
                     </div>
 
-                    <label>Email Address</label>
-                    <input type="email" class="form-control input" id="emailAddress" formControlName="emailAddress">
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" class="form-control" id="emailAddress" formControlName="emailAddress">
+                    </div>
 
-                    <select name="" id="projectStatus" class="form-select select" formControlName="projectStatus">
-                        <option value="Stable">Stable</option>
-                        <option value="Critical">Critical</option>
-                        <option value="Finished">Finished</option>
-                    </select>
+                    <div class="form-group">
+                        <select name="" id="projectStatus" class="form-control" formControlName="projectStatus">
+                            <option value="Stable">Stable</option>
+                            <option value="Critical">Critical</option>
+                            <option value="Finished">Finished</option>
+                        </select>
+                    </div>
+
                 </div>
 
                 <button class="btn btn-primary" type="submit">Submit</button>
